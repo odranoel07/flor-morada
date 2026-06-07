@@ -77,32 +77,30 @@ function updateLyrics() {
   var activeData  = usingSong2 ? lyricsData2 : lyricsData;
   var time        = activeAudio.currentTime;
 
-  // Ocultar letras cuando la carta está abierta, o cuando está el gatito o la luna
+  // Ocultar letras cuando la carta, gatito o luna estén visibles
   if (cartaOpen || catShown || moonShown) {
     lyrics.style.opacity = 0;
     lyrics.innerHTML = "";
-    return;
-  }
-
-  var currentLine = null;
-  for (var i = activeData.length - 1; i >= 0; i--) {
-    if (time >= activeData[i].time && time < activeData[i].time + 9) {
-      currentLine = activeData[i]; break;
+    // Aun así chequear el finale (no hacer return completo)
+  } else {
+    var currentLine = null;
+    for (var i = activeData.length - 1; i >= 0; i--) {
+      if (time >= activeData[i].time && time < activeData[i].time + 9) {
+        currentLine = activeData[i]; break;
+      }
     }
-  }
-  if (currentLine) {
-    lyrics.style.opacity = 1;
-    lyrics.innerHTML = currentLine.text;
-  } else {
-    lyrics.style.opacity = 0;
-    lyrics.innerHTML = "";
-  }
-
-  // Clase especial para el mensaje de la segunda canción (letras grandes)
-  if (usingSong2) {
-    lyrics.classList.add("bold-msg");
-  } else {
-    lyrics.classList.remove("bold-msg");
+    if (currentLine) {
+      lyrics.style.opacity = 1;
+      lyrics.innerHTML = currentLine.text;
+    } else {
+      lyrics.style.opacity = 0;
+      lyrics.innerHTML = "";
+    }
+    if (usingSong2) {
+      lyrics.classList.add("bold-msg");
+    } else {
+      lyrics.classList.remove("bold-msg");
+    }
   }
 
   if (!usingSong2 && !catShown && time >= CAT_APPEAR_TIME) mostrarGatito();
@@ -298,7 +296,15 @@ function cerrarEscena() {
   lanzarEstrellasCierre();
   setTimeout(function () {
     carta.classList.remove("open");
-    setTimeout(function () { moonScene.classList.remove("visible"); }, 700);
+    cartaOpen = false;
+    setTimeout(function () {
+      moonScene.classList.remove("visible");
+      moonShown = false;
+      // Disparar finale al cerrar la carta
+      if (!shootingStarDone) {
+        setTimeout(iniciarFinale, 800);
+      }
+    }, 700);
   }, 380);
 }
 
