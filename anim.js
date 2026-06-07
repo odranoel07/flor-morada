@@ -1,4 +1,5 @@
-// ── Referencias ──────────────────────────────────────────────────────
+// -*- coding: utf-8 -*-
+// ?? Referencias ??????????????????????????????????????????????????????
 var audio1       = document.getElementById("audio1");
 var audio2       = document.getElementById("audio2");
 var lyrics       = document.getElementById("lyrics");
@@ -16,54 +17,54 @@ var nightDiv     = document.querySelector(".night");
 var leoBg        = document.getElementById("leo-bg");
 var leoFinal     = document.getElementById("leo-final");
 
-// ════════════════════════════════════════════════════════════════════
-// MENSAJE QUE APARECE EN VEZ DE LAS LETRAS DE LA CANCIÓN
+// ????????????????????????????????????????????????????????????????????
+// MENSAJE QUE APARECE EN VEZ DE LAS LETRAS DE LA CANCI?N
 // Se muestra en fragmentos sincronizados con el audio
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 var lyricsData = [
   { text: "Antes que nada, quiero pedirte disculpas...", time: 5 },
-  { text: "...por cualquier momento en que mis acciones hayan podido hacerte sentir incómoda.", time: 12 },
+  { text: "...por cualquier momento en que mis acciones hayan podido hacerte sentir inc\u00f3moda.", time: 12 },
   { text: "He reflexionado mucho sobre ello", time: 22 },
   { text: "e intentado aprender de mis errores para ser una mejor persona.", time: 30 },
-  { text: "También quiero agradecerte...", time: 42 },
+  { text: "Tambi\u00e9n quiero agradecerte...", time: 42 },
   { text: "porque fue un gran regalo del destino que nuestros caminos se cruzaran.", time: 50 },
   { text: "Eres una persona que admiro profundamente", time: 62 },
-  { text: "por la dedicación, la disciplina y el esfuerzo que pones en todo lo que haces.", time: 70 },
-  { text: "Estas flores moradas representan esa admiración,", time: 82 },
+  { text: "por la dedicaci\u00f3n, la disciplina y el esfuerzo que pones en todo lo que haces.", time: 70 },
+  { text: "Estas flores moradas representan esa admiraci\u00f3n,", time: 82 },
   { text: "respeto y esperanza que deseo para ti.", time: 90 },
   { text: "Que te recuerden siempre la fuerza que tienes", time: 100 },
-  { text: "para superar cualquier obstáculo y alcanzar cada una de tus metas.", time: 108 },
+  { text: "para superar cualquier obst\u00e1culo y alcanzar cada una de tus metas.", time: 108 },
   { text: "Y si alguna vez aparecen las dudas o el cansancio en tu camino...", time: 120 },
   { text: "espero que recuerdes todo lo que ya has logrado.", time: 130 },
-  { text: "Confía en ti, en tu esfuerzo", time: 140 },
+  { text: "Conf\u00eda en ti, en tu esfuerzo", time: 140 },
   { text: "y en todo lo que eres capaz de construir.", time: 148 },
-  { text: "Estoy seguro de que llegarás muy lejos 🌟", time: 158 },
-  { text: "porque tienes la determinación necesaria para hacerlo.", time: 166 },
+  { text: "Estoy seguro de que llegar\u00e1s muy lejos \u1f31f", time: 158 },
+  { text: "porque tienes la determinaci\u00f3n necesaria para hacerlo.", time: 166 },
   { text: "Te deseo experiencias que te hagan crecer,", time: 178 },
   { text: "personas que te aporten felicidad y momentos de orgullo.", time: 186 },
-  { text: "Nunca dejes de perseguir tus sueños ni de creer en ellos. 💜", time: 198 },
-  { text: "Me alegrará seguir sabiendo de ti y de tus logros.", time: 210 },
+  { text: "Nunca dejes de perseguir tus sue\u00f1os ni de creer en ellos. \u1f49c", time: 198 },
+  { text: "Me alegrar\u00e1 seguir sabiendo de ti y de tus logros.", time: 210 },
   { text: "Espero que podamos seguir manteniendo el contacto.", time: 220 },
-  { text: "Cuídate mucho y sigue brillando ✨", time: 228 },
+  { text: "Cu\u00eddate mucho y sigue brillando \u2728", time: 228 },
 ];
 
-// Mensaje motivacional para la segunda canción
+// Mensaje motivacional para la segunda canci?n
 var lyricsData2 = [
-  { text: "NUNCA DUDES DE TI ✨",                                          time: 5   },
-  { text: "TÚ SABES QUE PUEDES",                                           time: 18  },
-  { text: "CON TODO EL MUNDO 💫",                                          time: 30  },
+  { text: "NUNCA DUDES DE TI \u2728",                                          time: 5   },
+  { text: "T\u00da SABES QUE PUEDES",                                           time: 18  },
+  { text: "CON TODO EL MUNDO \u1f4ab",                                          time: 30  },
   { text: "ERES UNA MUJER",                                                time: 45  },
-  { text: "QUE JAMÁS PODRÁN COMPARAR CON NADIE",                          time: 57  },
-  { text: "PORQUE TÚ ERES DIFERENTE",                                      time: 72  },
-  { text: "AL RESTO DE PERSONAS 🌟",                                       time: 84  },
-  { text: "ÚNICA",                                                         time: 100 },
-  { text: "✨ ÚNICA ✨",                                                   time: 118 },
-  { text: "NUNCA LO OLVIDES 💜",                                           time: 135 },
+  { text: "QUE JAM\u00c1S PODR\u00c1N COMPARAR CON NADIE",                          time: 57  },
+  { text: "PORQUE T\u00da ERES DIFERENTE",                                      time: 72  },
+  { text: "AL RESTO DE PERSONAS \u1f31f",                                       time: 84  },
+  { text: "\u00daNICA",                                                         time: 100 },
+  { text: "\u2728 \u00daNICA \u2728",                                                   time: 118 },
+  { text: "NUNCA LO OLVIDES \u1f49c",                                           time: 135 },
 ];
 
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 // ESTADO
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 var usingSong2       = false;
 var catShown         = false;
 var moonShown        = false;
@@ -77,9 +78,9 @@ var CAT_APPEAR_TIME = SONG1_DURATION - 25;
 var CAT_SHOW_MS     = 7000;
 var FINALE_TIME     = 145;
 
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 // LOOP LETRAS / MENSAJE
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 function updateLyrics() {
   var activeAudio = usingSong2 ? audio2 : audio1;
   var activeData  = usingSong2 ? lyricsData2 : lyricsData;
@@ -99,7 +100,7 @@ function updateLyrics() {
     lyrics.innerHTML = "";
   }
 
-  // Clase especial para el mensaje de la segunda canción (letras grandes)
+  // Clase especial para el mensaje de la segunda canci?n (letras grandes)
   if (usingSong2) {
     lyrics.classList.add("bold-msg");
   } else {
@@ -116,9 +117,9 @@ audio1.addEventListener("ended", function () {
   audio2.play().catch(function(){});
 });
 
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 // GATITO
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 function mostrarGatito() {
   catShown = true;
   catScene.classList.add("visible");
@@ -128,9 +129,9 @@ function mostrarGatito() {
   }, CAT_SHOW_MS);
 }
 
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 // LUNA
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 function mostrarLuna() {
   if (moonShown) return;
   moonShown = true;
@@ -157,32 +158,32 @@ function partirLuna() {
   }, 1000);
 }
 
-// ════════════════════════════════════════════════════════════════════
-// CARTA — escritura animada (mensaje completo)
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
+// CARTA ? escritura animada (mensaje completo)
+// ????????????????????????????????????????????????????????????????????
 var mensajeCarta =
 "Antes que nada, quiero pedirte disculpas por cualquier momento " +
-"en el que mis acciones hayan podido hacerte sentir incómoda o mal. " +
+"en el que mis acciones hayan podido hacerte sentir inc\u00f3moda o mal. " +
 "Con el tiempo he reflexionado mucho sobre ello y he intentado aprender " +
 "de mis errores para ser una mejor persona.\n\n" +
-"También quiero agradecerte porque fue un gran regalo del destino que " +
+"Tambi\u00e9n quiero agradecerte porque fue un gran regalo del destino que " +
 "nuestros caminos se cruzaran y que tuviera la oportunidad de conocerte. " +
-"Eres una persona que admiro profundamente por la dedicación, la disciplina " +
+"Eres una persona que admiro profundamente por la dedicaci\u00f3n, la disciplina " +
 "y el esfuerzo que pones en todo lo que haces.\n\n" +
-"Estas flores moradas representan esa admiración, respeto y esperanza que " +
+"Estas flores moradas representan esa admiraci\u00f3n, respeto y esperanza que " +
 "deseo para ti. Que te recuerden siempre la fuerza que tienes para superar " +
-"cualquier obstáculo y la capacidad que posees para alcanzar cada una de tus metas.\n\n" +
+"cualquier obst\u00e1culo y la capacidad que posees para alcanzar cada una de tus metas.\n\n" +
 "Y si alguna vez aparecen las dudas, el miedo o el cansancio en tu camino, " +
-"espero que recuerdes todo lo que ya has logrado. Confía en ti, en tu esfuerzo " +
-"y en todo lo que eres capaz de construir. Estoy seguro de que llegarás muy " +
-"lejos porque tienes la determinación necesaria para hacerlo.\n\n" +
+"espero que recuerdes todo lo que ya has logrado. Conf\u00eda en ti, en tu esfuerzo " +
+"y en todo lo que eres capaz de construir. Estoy seguro de que llegar\u00e1s muy " +
+"lejos porque tienes la determinaci\u00f3n necesaria para hacerlo.\n\n" +
 "Te deseo experiencias que te hagan crecer, personas que te aporten felicidad " +
 "y muchos momentos que te llenen de orgullo por todo lo que has conseguido. " +
-"Nunca dejes de perseguir tus sueños ni de creer en ellos.\n\n" +
-"Más allá de todo, me alegrará seguir sabiendo de ti y de los logros que vayas " +
+"Nunca dejes de perseguir tus sue\u00f1os ni de creer en ellos.\n\n" +
+"M\u00e1s all\u00e1 de todo, me alegrar\u00e1 seguir sabiendo de ti y de los logros que vayas " +
 "alcanzando. Espero que podamos seguir manteniendo el contacto y que la vida nos " +
 "permita compartir, aunque sea de vez en cuando, parte de nuestros caminos.\n\n" +
-"Cuídate mucho y sigue brillando. 💜";
+"Cu\u00eddate mucho y sigue brillando. \u1f49c";
 
 function iniciarEscritura() {
   var idx = 0, base = 22;
@@ -206,9 +207,9 @@ function iniciarEscritura() {
   escribir();
 }
 
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 // FINALE
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 function iniciarFinale() {
   shootingStarDone = true;
   carta.classList.remove("open");
@@ -237,7 +238,7 @@ function mostrarLeoFinal() {
   }
 }
 
-var textoLeo = "Y si algún día tu agenda te da un pequeño respiro, me gustaría invitarte a tomar un helado y compartir una buena conversación. Sin presiones, solo como una oportunidad para ponernos al día y pasar un momento agradable.";
+var textoLeo = "Y si alg\u00fan d\u00eda tu agenda te da un peque\u00f1o respiro, me gustar\u00eda invitarte a tomar un helado y compartir una buena conversaci\u00f3n. Sin presiones, solo como una oportunidad para ponernos al d\u00eda y pasar un momento agradable.";
 
 function escribirTextoLeo() {
   var leoTextEl = document.getElementById("leo-final-text");
@@ -247,7 +248,7 @@ function escribirTextoLeo() {
     if (idx >= textoLeo.length) {
       var leoCursor = document.getElementById("leo-cursor");
       if (leoCursor) leoCursor.style.display = "none";
-      // Mostrar botón volver a ver
+      // Mostrar bot?n volver a ver
       var btnVolver = document.getElementById("btn-volver");
       if (btnVolver) btnVolver.classList.add("show");
       return;
@@ -264,11 +265,11 @@ function escribirTextoLeo() {
   escribir();
 }
 
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 // ESTRELLAS DECORATIVAS
-// ════════════════════════════════════════════════════════════════════
+// ????????????????????????????????????????????????????????????????????
 function lanzarEstrellas() {
-  var emojis = ["⭐","✨","💜","🌸","🌙","💫","🌟","🌺"];
+  var emojis = ["\u2b50","\u2728","\u1f49c","\u1f338","\u1f319","\u1f4ab","\u1f31f","\u1f33a"];
   for (var i = 0; i < 20; i++) {
     (function(idx) {
       setTimeout(function () {
@@ -298,7 +299,7 @@ function cerrarEscena() {
 }
 
 function lanzarEstrellasCierre() {
-  var emojis = ["💜","✨","🌸","💫","⭐","🌟"];
+  var emojis = ["\u1f49c","\u2728","\u1f338","\u1f4ab","\u2b50","\u1f31f"];
   for (var i = 0; i < 12; i++) {
     (function(idx) {
       setTimeout(function () {
@@ -319,7 +320,7 @@ function lanzarEstrellasCierre() {
   }
 }
 
-// Volver a ver — fade y recarga
+// Volver a ver ? fade y recarga
 function volverAVer() {
   var overlay = document.createElement("div");
   overlay.style.cssText = "position:fixed;inset:0;z-index:9999;background:#02020f;opacity:0;transition:opacity 1.2s ease;pointer-events:all;";
