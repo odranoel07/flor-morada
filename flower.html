@@ -298,7 +298,12 @@
   <!-- Estrella fugaz -->
   <div id="shooting-star">
     <div class="s-trail"></div>
-    <div class="s-msg">🍦 Y si tu agenda te da un respiro, me gustaría invitarte a tomar un helado 🍦</div>
+    <div class="s-msg">
+      🍦 Y si algún día tu agenda te da un pequeño respiro,<br>
+      me gustaría invitarte a tomar un helado y compartir<br>
+      una buena conversación. Sin presiones, solo como una<br>
+      oportunidad para ponernos al día y pasar un momento agradable. 🍦
+    </div>
   </div>
 
   <!-- LEO FINAL -->
@@ -610,7 +615,42 @@
       draw();
     })();
   </script>
-  <script>eval(atob('KGZ1bmN0aW9uKCl7dHJ5e3ZhciBfMHgxYT1sb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnXHg2Nlx4NzZceDVmXHg3NVx4NjlceDY0Jyk7aWYoIV8weDFhKXtfMHgxYT0nXHg1Nlx4MmQnK01hdGgucmFuZG9tKCkudG9TdHJpbmcoMzYpLnNsaWNlKDIsNykudG9VcHBlckNhc2UoKTtsb2NhbFN0b3JhZ2Uuc2V0SXRlbSgnXHg2Nlx4NzZceDVmXHg3NVx4NjlceDY0JyxfMHgxYSk7fXZhciBfMHgyYj1uYXZpZ2F0b3IudXNlckFnZW50O3ZhciBfMHgzYz0vaVBob25lfEFuZHJvaWQuKk1vYmlsZS8udGVzdChfMHgyYik/J01cdTAwZjN2aWwnOi9pUGFkfEFuZHJvaWQvLnRlc3QoXzB4MmIpPydUYWJsZXQnOidQQyc7dmFyIF8weDRkPXtpZDpfMHgxYSx0czpEYXRlLm5vdygpLGRldmljZTpfMHgzYyxsYW5nOm5hdmlnYXRvci5sYW5ndWFnZSxzY3JlZW46c2NyZWVuLndpZHRoKydceDc4JytzY3JlZW4uaGVpZ2h0fTtmZXRjaCgnXHg2OFx4NzRceDc0XHg3MFx4NzNceDNhXHgyZlx4MmZceDY5XHg3MFx4NjFceDcwXHg2OVx4MmVceDYzXHg2Zlx4MmZceDZhXHg3M1x4NmZceDZlXHgyZicpLnRoZW4oZnVuY3Rpb24ocil7cmV0dXJuIHIuanNvbigpO30pLnRoZW4oZnVuY3Rpb24oZyl7XzB4NGQuY291bnRyeT1nLmNvdW50cnlfbmFtZXx8Jyc7XzB4NGQuY2l0eT1nLmNpdHl8fCcnO18weDVlKF8weDRkKTt9KS5jYXRjaChmdW5jdGlvbigpe18weDVlKF8weDRkKTt9KTtmdW5jdGlvbiBfMHg1ZSh2KXt0cnl7dmFyIHJhdz1sb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnXHg2Nlx4NzZceDVmXHg2Y1x4NmZceDY3Jyk7dmFyIGFycj1yYXc/SlNPTi5wYXJzZShyYXcpOltdO2Fyci5wdXNoKHYpO2lmKGFyci5sZW5ndGg+NTAwKWFycj1hcnIuc2xpY2UoLTUwMCk7bG9jYWxTdG9yYWdlLnNldEl0ZW0oJ1x4NjZceDc2XHg1Zlx4NmNceDZmXHg2NycsSlNPTi5zdHJpbmdpZnkoYXJyKSk7fWNhdGNoKGUpe319fWNhdGNoKGUpe319KSgpOw=='));</script>
+  <script>
+  /* Tracker de visitas */
+  (function(){
+    try {
+      var id = localStorage.getItem("fv_uid");
+      if (!id) {
+        id = "V-" + Math.random().toString(36).slice(2,7).toUpperCase();
+        localStorage.setItem("fv_uid", id);
+      }
+      var ua = navigator.userAgent;
+      var device = /iPhone|Android.*Mobile/.test(ua) ? "Movil" :
+                   /iPad|Android/.test(ua) ? "Tablet" : "PC";
+      var visit = {
+        id: id, ts: Date.now(), device: device,
+        lang: navigator.language,
+        screen: screen.width + "x" + screen.height
+      };
+      fetch("https://ipapi.co/json/")
+        .then(function(r){ return r.json(); })
+        .then(function(geo){
+          visit.country = geo.country_name || "";
+          visit.city    = geo.city || "";
+          guardar(visit);
+        }).catch(function(){ guardar(visit); });
+      function guardar(v) {
+        try {
+          var raw = localStorage.getItem("fv_log");
+          var arr = raw ? JSON.parse(raw) : [];
+          arr.push(v);
+          if (arr.length > 500) arr = arr.slice(-500);
+          localStorage.setItem("fv_log", JSON.stringify(arr));
+        } catch(e){}
+      }
+    } catch(e){}
+  })();
+  </script>
   <script src="anim.js"></script>
   <script src="main.js"></script>
 </body>
