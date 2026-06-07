@@ -39,18 +39,18 @@ var lyricsData = [
   { text: "Sigue adelante. Vas muy bien. \u2728", time: 172 },
 ];
 
-// Mensaje motivacional para la segunda canci?n
+// Mensaje motivacional para la segunda canción
 var lyricsData2 = [
-  { text: "NUNCA DUDES DE TI \u2728",                                          time: 5   },
-  { text: "T\u00da SABES QUE PUEDES",                                           time: 18  },
-  { text: "CON TODO EL MUNDO \u1f4ab",                                          time: 30  },
-  { text: "ERES UNA MUJER",                                                time: 45  },
-  { text: "QUE JAM\u00c1S PODR\u00c1N COMPARAR CON NADIE",                          time: 57  },
-  { text: "PORQUE T\u00da ERES DIFERENTE",                                      time: 72  },
-  { text: "AL RESTO DE PERSONAS \u1f31f",                                       time: 84  },
-  { text: "\u00daNICA",                                                         time: 100 },
-  { text: "\u2728 \u00daNICA \u2728",                                                   time: 118 },
-  { text: "NUNCA LO OLVIDES \u1f49c",                                           time: 135 },
+  { text: "NUNCA DUDES DE TI \u2728",                          time: 5   },
+  { text: "T\u00da SABES QUE PUEDES",                          time: 18  },
+  { text: "CON TODO EL MUNDO \ud83d\udcab",                    time: 30  },
+  { text: "ERES UNA MUJER",                                    time: 45  },
+  { text: "QUE JAM\u00c1S PODR\u00c1N COMPARAR CON NADIE",      time: 57  },
+  { text: "PORQUE T\u00da ERES DIFERENTE",                      time: 72  },
+  { text: "AL RESTO DE PERSONAS \ud83c\udf1f",                 time: 84  },
+  { text: "\u00daNICA",                                        time: 100 },
+  { text: "\u2728 \u00daNICA \u2728",                          time: 118 },
+  { text: "NUNCA LO OLVIDES \ud83d\udc9c",                     time: 135 },
 ];
 
 // ????????????????????????????????????????????????????????????????????
@@ -216,8 +216,8 @@ function iniciarFinale() {
   carta.classList.remove("open");
   setTimeout(function () { moonScene.classList.remove("visible"); }, 600);
   setTimeout(desvanecerFlores, 1400);
-  setTimeout(dispararEstrellaFugaz, 2800);
-  setTimeout(mostrarLeoFinal, 5000);
+  // Leo + helado + texto aparecen juntos
+  setTimeout(mostrarLeoFinal, 2800);
 }
 
 function desvanecerFlores() {
@@ -225,18 +225,21 @@ function desvanecerFlores() {
   floresFading = true;
   if (floresDiv) { floresDiv.style.transition="opacity 3s ease"; floresDiv.style.opacity="0"; setTimeout(function(){floresDiv.style.display="none";},3100); }
   if (nightDiv)  { nightDiv.style.transition="opacity 3s ease";  nightDiv.style.opacity="0";  setTimeout(function(){nightDiv.style.display="none";}, 3100); }
-  if (leoBg)     { leoBg.style.transition="opacity 3s ease";     leoBg.style.opacity="0.82"; }
+  if (leoBg)     { leoBg.style.transition="opacity 3s ease";     leoBg.style.opacity="0.6"; }
 }
 
-function dispararEstrellaFugaz() {
-  shootingStar.classList.add("fire");
-}
+function dispararEstrellaFugaz() { /* integrado en leo-final */ }
 
 function mostrarLeoFinal() {
-  if (leoFinal) {
-    leoFinal.classList.add("visible");
-    setTimeout(escribirTextoLeo, 1800);
-  }
+  if (!leoFinal) return;
+  leoFinal.classList.add("visible");
+  // Mensaje del helado aparece 1.5s después con animación
+  setTimeout(function () {
+    var h = document.getElementById("helado-inner");
+    if (h) h.classList.add("show");
+  }, 1500);
+  // Texto constelación empieza a escribirse 3s después
+  setTimeout(escribirTextoLeo, 3000);
 }
 
 var textoLeo = "Fue un gran regalo del destino que nuestros caminos se cruzaran. Admiro la dedicaci\u00f3n con la que persigues tus metas y me alegra haber coincidido con alguien que inspira tanto con su esfuerzo y determinaci\u00f3n.";

@@ -49,105 +49,78 @@
     #const-left{left:2px;} #const-right{right:2px;}
     @media(max-width:480px){.side-const{display:none;}}
 
-    /* ══ ESTRELLA FUGAZ ══ */
-    #shooting-star{
-      position:fixed;z-index:300;pointer-events:none;
-      opacity:0;
-      top:50%;left:50%;
-      transform:translate(-50%,-50%);
-      display:flex;flex-direction:column;align-items:center;gap:10px;
-    }
-    .s-trail{
-      width:80px;height:3px;
-      background:linear-gradient(to right,transparent,#ffe566,#fff);
-      border-radius:3px;
-      opacity:0;
-    }
-    .s-msg{
-      font-family:'Dancing Script',cursive;
-      font-size:clamp(1rem,4vw,1.8rem);
-      color:#ffe566;
-      background:rgba(1,0,16,0.88);
-      padding:0.7rem 1.4rem;
-      border-radius:22px;
-      border:1px solid rgba(255,229,102,0.4);
-      text-shadow:0 0 16px #ffb800,0 0 40px #ff880066;
-      letter-spacing:0.03em;
-      text-align:center;
-      line-height:1.55;
-      max-width:min(520px,86vw);
-    }
-    @keyframes shootFade{
-      0%  {opacity:0;transform:translate(-50%,-50%) scale(0.8);}
-      15% {opacity:1;transform:translate(-50%,-50%) scale(1);}
-      75% {opacity:1;transform:translate(-50%,-50%) scale(1);}
-      100%{opacity:0;transform:translate(-50%,-50%) scale(0.95);}
-    }
-    #shooting-star.fire{animation:shootFade 7s ease forwards;}
-    #shooting-star.fire .s-msg{display:block;}
+    /* ══ ESTRELLA FUGAZ — oculta, mensaje integrado en leo-final ══ */
+    #shooting-star{ display:none; }
 
-    /* ══ LEO FINAL — completamente centrado ══ */
+    /* ══ LEO FINAL — Leo arriba grande, mensaje centro, botón abajo ══ */
     #leo-final{
       position:fixed;inset:0;z-index:250;
       display:flex;flex-direction:column;
-      align-items:center;justify-content:center;
-      gap:1.4rem;
-      padding:2rem 1.2rem;
+      align-items:center;justify-content:flex-start;
+      padding:3vh 1.2rem 3vh;
       background:rgba(1,0,18,0);opacity:0;pointer-events:none;
       transition:opacity 2.5s ease,background 2.5s ease;
-      overflow-y:auto;
-      text-align:center;
+      overflow-y:auto;gap:0;
     }
-    #leo-final.visible{opacity:1;pointer-events:all;background:rgba(1,0,18,0.95);}
-    #leo-final svg{
-      width:min(420px,80vw);
-      height:auto;
-      filter:drop-shadow(0 0 14px rgba(180,220,255,0.6));
-      flex-shrink:0;
-      display:block;
-      margin:0 auto;
+    #leo-final.visible{opacity:1;pointer-events:all;background:rgba(1,0,18,0.97);}
+
+    /* Leo SVG — parte superior bien visible */
+    #leo-svg-top{
+      width:min(620px,94vw);height:auto;
+      filter:drop-shadow(0 0 18px rgba(180,220,255,0.75));
+      display:block;margin:0 auto;flex-shrink:0;
     }
     .leo-star{fill:#e8f4ff;animation:leoTwink 2s ease-in-out infinite alternate;}
     .leo-star.bright{fill:#fffde0;}
     .leo-star:nth-child(2n){animation-delay:0.4s;}.leo-star:nth-child(3n){animation-delay:0.8s;}.leo-star:nth-child(5n){animation-delay:1.2s;}
-    @keyframes leoTwink{from{opacity:0.5;transform:scale(1);}to{opacity:1;transform:scale(1.3);}}
-    .leo-line{stroke:rgba(170,210,255,0.45);stroke-width:1.5;fill:none;stroke-dasharray:8 8;animation:leoDash 5s linear infinite;}
+    @keyframes leoTwink{from{opacity:0.5;transform:scale(1);}to{opacity:1;transform:scale(1.35);}}
+    .leo-line{stroke:rgba(170,210,255,0.5);stroke-width:1.8;fill:none;stroke-dasharray:8 8;animation:leoDash 5s linear infinite;}
     @keyframes leoDash{to{stroke-dashoffset:-80;}}
+
+    /* Mensaje del helado — centro, bien visible */
+    #helado-msg{
+      width:100%;display:flex;align-items:center;justify-content:center;
+      padding:2.5vh 0.5rem;flex:1;
+    }
+    .helado-inner{
+      font-family:'Dancing Script',cursive;
+      font-size:clamp(1.05rem,3.8vw,1.8rem);
+      color:#ffe566;
+      text-align:center;line-height:1.75;letter-spacing:0.02em;
+      text-shadow:0 0 22px #ffb800cc,0 0 55px #ff880066,0 2px 8px #0009;
+      max-width:min(560px,88vw);
+      opacity:0;transform:translateY(14px);
+      transition:opacity 1.4s ease 0.3s,transform 1.4s ease 0.3s;
+    }
+    .helado-inner.show{opacity:1;transform:translateY(0);}
+
+    /* Texto Leo escrito — pie, sutil */
     #leo-final-text{
       font-family:'Cormorant Garamond',serif;font-style:italic;
-      font-size:clamp(0.92rem,2.8vw,1.2rem);
-      color:rgba(210,235,255,0.95);
-      text-align:center;
-      width:min(580px,86vw);
-      max-width:86vw;
-      line-height:1.9;letter-spacing:0.03em;
-      text-shadow:0 0 20px rgba(150,200,255,0.5);
-      padding:0 0.5rem;
-      word-break:break-word;
-      display:block;
-      margin:0 auto;
+      font-size:clamp(0.82rem,2.2vw,1rem);
+      color:rgba(170,200,255,0.65);
+      text-align:center;width:min(520px,86vw);max-width:86vw;
+      line-height:1.8;letter-spacing:0.03em;
+      text-shadow:0 0 12px rgba(120,170,255,0.35);
+      padding:0 0.5rem;word-break:break-word;
+      display:block;margin:0 auto;flex-shrink:0;
     }
-    #leo-cursor{display:inline-block;width:2px;height:1em;background:rgba(180,220,255,0.8);vertical-align:text-bottom;margin-left:2px;animation:blink2 0.9s step-end infinite;}
+    #leo-cursor{display:inline-block;width:2px;height:0.85em;background:rgba(150,190,255,0.65);vertical-align:text-bottom;margin-left:2px;animation:blink2 0.9s step-end infinite;}
     @keyframes blink2{0%,100%{opacity:1}50%{opacity:0}}
 
-    /* Botón volver a ver — aparece al final de Leo */
+    /* Botón volver a ver */
     #btn-volver{
-      display:block;margin:0.6rem auto 0;
+      display:block;margin:2vh auto 0;flex-shrink:0;
       background:transparent;
-      border:1.5px solid rgba(180,210,255,0.5);
-      border-radius:40px;
+      border:1.5px solid rgba(180,210,255,0.5);border-radius:40px;
       padding:0.65rem 2rem;
-      font-family:'Dancing Script',cursive;
-      font-size:clamp(1rem,3.5vw,1.3rem);
-      color:rgba(200,230,255,0.9);
-      cursor:pointer;
-      letter-spacing:0.06em;
-      opacity:0;
-      pointer-events:none;
+      font-family:'Dancing Script',cursive;font-size:clamp(1rem,3.5vw,1.3rem);
+      color:rgba(200,230,255,0.9);cursor:pointer;letter-spacing:0.06em;
+      opacity:0;pointer-events:none;
       transition:opacity 1s ease,transform 0.2s,box-shadow 0.2s,background 0.2s;
       text-shadow:0 0 14px rgba(150,200,255,0.6);
       box-shadow:0 0 18px rgba(150,200,255,0.1);
-      -webkit-tap-highlight-color:transparent;
+      -webkit-tap-highlight-color:transparent;min-height:44px;min-width:140px;
     }
     #btn-volver.show{opacity:1;pointer-events:all;}
     #btn-volver:hover,#btn-volver:active{
@@ -205,7 +178,36 @@
     #carta.open{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:all;}
     .carta-deco{text-align:center;font-size:1.8rem;display:block;margin-bottom:0.4rem;animation:hbeat 1.5s ease-in-out infinite;}
     @keyframes hbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.18)}28%{transform:scale(1)}42%{transform:scale(1.12)}}
-    #carta h2{font-family:'Dancing Script',cursive;font-size:clamp(1.2rem,4vw,1.5rem);color:#7b1fa2;text-align:center;margin:0 0 0.8rem;}
+    #carta h2{font-family:'Dancing Script',cursive;font-size:clamp(1.2rem,4vw,1.5rem);color:#7b1fa2;text-align:center;margin:0 0 0.3rem;}
+
+    /* Título + Leo con línea roja */
+    .carta-header{text-align:center;margin-bottom:1rem;}
+    .leo-carta-wrap{width:100%;overflow:hidden;}
+    .leo-carta-svg{
+      width:100%;max-width:420px;
+      height:auto;
+      display:block;
+      margin:0 auto;
+      /* animación sutil de las estrellas via CSS */
+    }
+    /* Estrellas de Leo en la carta — pulso suave */
+    .leo-carta-svg circle[r="6.5"],
+    .leo-carta-svg circle[r="5.5"],
+    .leo-carta-svg circle[r="4"] {
+      animation: leoPulse 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes leoPulse {
+      from { opacity: 0.8; }
+      to   { opacity: 1; filter: brightness(1.2); }
+    }
+    /* Línea roja — brillo pulsante */
+    .leo-carta-svg line[stroke="#cc1111"] {
+      animation: redPulse 2s ease-in-out infinite alternate;
+    }
+    @keyframes redPulse {
+      from { stroke-opacity: 0.75; }
+      to   { stroke-opacity: 1; }
+    }
     #carta-text{font-family:'Cormorant Garamond',serif;font-size:clamp(0.92rem,3vw,1.02rem);color:#3a1830;line-height:1.82;min-height:2em;}
     #cursor{display:inline-block;width:2px;height:1em;background:#9c27b0;vertical-align:text-bottom;margin-left:2px;animation:blink 0.8s step-end infinite;}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -308,7 +310,8 @@
 
   <!-- LEO FINAL -->
   <div id="leo-final">
-    <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg">
+    <!-- Constelación Leo — parte superior grande -->
+    <svg id="leo-svg-top" viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg">
       <g>
         <line class="leo-line" x1="200" y1="60"  x2="248" y2="140"/>
         <line class="leo-line" x1="248" y1="140" x2="188" y2="148"/>
@@ -334,6 +337,16 @@
       <circle class="leo-star" cx="288" cy="258" r="4"   fill="#cce4ff"/>
       <text x="350" y="310" font-family="Georgia,serif" font-size="18" fill="rgba(200,225,255,0.5)" text-anchor="middle" font-style="italic">♌ LEO</text>
     </svg>
+    <!-- Mensaje del helado — centro pantalla -->
+    <div id="helado-msg">
+      <div class="helado-inner" id="helado-inner">
+        🍦 Y si algún día tu agenda te da un pequeño respiro,<br>
+        me gustaría invitarte a tomar un helado y compartir<br>
+        una buena conversación. Sin presiones, solo como una<br>
+        oportunidad para ponernos al día y pasar un momento agradable. 🍦
+      </div>
+    </div>
+    <!-- Texto constelación escrito — pie -->
     <div id="leo-final-text"></div><span id="leo-cursor"></span>
     <button id="btn-volver" onclick="volverAVer()">🌸 Volver a ver 🌸</button>
   </div>
@@ -533,7 +546,104 @@
     <!-- CARTA — título "Con Cariño" -->
     <div id="carta">
       <span class="carta-deco">💜</span>
-      <h2>Con Cariño</h2>
+
+      <!-- Título con línea roja que pasa por la constelación de Leo -->
+      <div class="carta-header">
+        <h2>Con Cari\u00f1o</h2>
+
+        <!-- Constelación Leo con la línea roja cruzándola -->
+        <div class="leo-carta-wrap">
+          <svg class="leo-carta-svg" viewBox="0 0 420 90" xmlns="http://www.w3.org/2000/svg">
+
+            <!-- LÍNEA ROJA que cruza toda la constelación -->
+            <line x1="0" y1="48" x2="420" y2="48"
+                  stroke="#cc1111" stroke-width="2.2"
+                  stroke-linecap="round"
+                  filter="url(#redGlow)"/>
+
+            <defs>
+              <filter id="redGlow" x="-20%" y="-200%" width="140%" height="500%">
+                <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="starGlow" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="1.8" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!--
+              Leo layout sobre y=48 (línea roja):
+              Hoz (cabeza): izquierda
+              Cuerpo y cola: derecha
+              Regulus (estrella más brillante) justo EN la línea
+            -->
+
+            <!-- Líneas de constelación -->
+            <!-- Hoz: Eta→Algieba→Zeta→Mu→Epsilon→Regulus→Algieba -->
+            <g stroke="rgba(200,220,255,0.55)" stroke-width="1.1" fill="none" stroke-dasharray="5 4">
+              <line x1="88"  y1="10" x2="105" y2="32"/>  <!-- Eta→Algieba -->
+              <line x1="105" y1="32" x2="82"  y2="36"/>  <!-- Algieba→Zeta -->
+              <line x1="82"  y1="36" x2="62"  y2="44"/>  <!-- Zeta→Mu -->
+              <line x1="62"  y1="44" x2="68"  y2="60"/>  <!-- Mu→Epsilon -->
+              <line x1="68"  y1="60" x2="108" y2="48"/>  <!-- Epsilon→Regulus -->
+              <line x1="108" y1="48" x2="105" y2="32"/>  <!-- Regulus→Algieba (cierra hoz) -->
+              <!-- Cuerpo: Regulus→Delta→Denebola -->
+              <line x1="108" y1="48" x2="185" y2="42"/>  <!-- Regulus→Delta -->
+              <line x1="185" y1="42" x2="270" y2="48"/>  <!-- Delta→Denebola -->
+              <!-- Cola: Denebola→Theta→Iota -->
+              <line x1="270" y1="48" x2="310" y2="62"/>  <!-- Denebola→Theta -->
+              <line x1="310" y1="62" x2="340" y2="48"/>  <!-- Theta→Iota -->
+              <line x1="340" y1="48" x2="368" y2="38"/>  <!-- Iota→punta cola -->
+            </g>
+
+            <!-- ESTRELLAS — las que están sobre la línea tienen halo blanco+rojo -->
+            <!-- Eta Leonis (arriba, fuera de línea) -->
+            <circle cx="88"  cy="10"  r="3.5" fill="#e8f0ff" filter="url(#starGlow)" opacity="0.9"/>
+
+            <!-- Algieba (Gamma) — arriba -->
+            <circle cx="105" cy="32"  r="4"   fill="#ddeeff" filter="url(#starGlow)" opacity="0.9"/>
+
+            <!-- Zeta — izquierda del centro -->
+            <circle cx="82"  cy="36"  r="3"   fill="#cce4ff" opacity="0.85"/>
+
+            <!-- Mu — toca casi la línea -->
+            <circle cx="62"  cy="44"  r="3"   fill="#cce4ff" opacity="0.85"/>
+
+            <!-- Epsilon — debajo de la línea -->
+            <circle cx="68"  cy="60"  r="3"   fill="#cce4ff" opacity="0.8"/>
+
+            <!-- REGULUS — EN la línea roja, más grande y brillante -->
+            <!-- Halo rojo alrededor de Regulus -->
+            <circle cx="108" cy="48"  r="10"  fill="rgba(180,20,20,0.15)"/>
+            <circle cx="108" cy="48"  r="6.5" fill="#fff5e0" filter="url(#starGlow)"/>
+            <circle cx="108" cy="48"  r="4"   fill="#fffde0"/>
+
+            <!-- Delta — sobre la línea -->
+            <circle cx="185" cy="42"  r="3.5" fill="#ddeeff" filter="url(#starGlow)" opacity="0.9"/>
+
+            <!-- DENEBOLA — EN la línea -->
+            <circle cx="270" cy="48"  r="9"   fill="rgba(180,20,20,0.12)"/>
+            <circle cx="270" cy="48"  r="5.5" fill="#ddeeff" filter="url(#starGlow)"/>
+            <circle cx="270" cy="48"  r="3.5" fill="#eef4ff"/>
+
+            <!-- Theta — debajo -->
+            <circle cx="310" cy="62"  r="3"   fill="#cce4ff" opacity="0.8"/>
+
+            <!-- Iota — en la línea -->
+            <circle cx="340" cy="48"  r="4"   fill="#ddeeff" filter="url(#starGlow)" opacity="0.9"/>
+
+            <!-- Punta cola -->
+            <circle cx="368" cy="38"  r="3"   fill="#cce4ff" opacity="0.8"/>
+
+            <!-- Etiqueta ♌ -->
+            <text x="210" y="82" font-family="Georgia,serif" font-size="11"
+                  fill="rgba(180,30,30,0.7)" text-anchor="middle" font-style="italic"
+                  letter-spacing="2">&#9804; LEO</text>
+          </svg>
+        </div>
+      </div>
+
       <div id="carta-text"></div><span id="cursor"></span>
       <button class="btn-cerrar" id="btnCerrar" onclick="cerrarEscena()">Cerrar ✨</button>
     </div>
